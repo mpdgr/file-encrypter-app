@@ -9,7 +9,7 @@ public class CryptApp {
         {
             CryptFrame frame = new CryptFrame();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            CryptPanel mainPanel = new CryptPanel();
+            MainPanel mainPanel = new MainPanel();
             frame.add(mainPanel);
             frame.setVisible(true);
         });
