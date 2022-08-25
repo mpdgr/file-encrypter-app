@@ -29,19 +29,19 @@ public class Config {
 
     static {
         try {
-            font = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/Lato/Lato-Regular.ttf"));
+            font = Font.createFont(Font.PLAIN, new File("src/main/resources/Fonts/Lato/Lato-Regular.ttf"));
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
 
         try {
-            fontBold = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/Lato/Lato-Bold.ttf"));
+            fontBold = Font.createFont(Font.PLAIN, new File("src/main/resources/Fonts/Lato/Lato-Bold.ttf"));
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
 
         try {
-            fontLight = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/Fonts/Lato/Lato-Light.ttf"));
+            fontLight = Font.createFont(Font.PLAIN, new File("src/main/resources/Fonts/Lato/Lato-Light.ttf"));
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }

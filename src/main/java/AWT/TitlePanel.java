@@ -32,7 +32,6 @@ public class TitlePanel extends JPanel {
         Image scaledLogo = null;
         if (logo != null) {
             scaledLogo = logo.getScaledInstance(dLogo, dLogo, Image.SCALE_SMOOTH);
-//            label.setIcon(new ImageIcon(scaledLogo));
         }
 
         JLabel logoLabel = new JLabel();
@@ -45,7 +44,6 @@ public class TitlePanel extends JPanel {
         JLabel description = new JLabel("   encrypt & decrypt files using AES-256 alghoritm");
         description.setFont(descriptionFont);
 
-//        label.setIcon(new ImageIcon("src/main/resources/icons/crypticon.png"));
         this.add(label, BorderLayout.WEST);
         this.add(logoLabel);
         this.add(description, BorderLayout.SOUTH);

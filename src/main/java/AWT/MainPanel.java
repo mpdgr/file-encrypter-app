@@ -5,8 +5,10 @@ import java.awt.*;
 
 public class MainPanel extends JPanel {
     public MainPanel(){
+
         this.setSize(CryptFrame.getWIDTH(), CryptFrame.getHEIGHT());
         this.setBackground(Config.getColor());
+
         GridBagLayout GBLayout = new GridBagLayout();
         this.setLayout(GBLayout);
         int inset = CryptFrame.getWIDTH() / 100;
@@ -119,10 +121,5 @@ public class MainPanel extends JPanel {
         decryptButtonPanelConstraints.fill = GridBagConstraints.BOTH;
         this.add(decryptButtonPanel, decryptButtonPanelConstraints);
 
-
-
-
-
-//        this.add(label);
     }
 }
