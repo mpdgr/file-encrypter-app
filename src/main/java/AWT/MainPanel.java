@@ -79,7 +79,7 @@ public class MainPanel extends JPanel {
         addFileEncryptPanelConstraints.gridheight = 1;
         addFileEncryptPanelConstraints.weightx = 100;
         addFileEncryptPanelConstraints.weighty = 100;
-        addFileEncryptPanelConstraints.insets.set(inset, inset * 2, inset, inset);
+        addFileEncryptPanelConstraints.insets.set(inset, inset * 3, inset, inset);
         addFileEncryptPanelConstraints.fill = GridBagConstraints.BOTH;
         this.add(addFileEncryptPanel, addFileEncryptPanelConstraints);
 
@@ -91,7 +91,7 @@ public class MainPanel extends JPanel {
         addFileDecryptPanelConstraints.gridheight = 1;
         addFileDecryptPanelConstraints.weightx = 100;
         addFileDecryptPanelConstraints.weighty = 100;
-        addFileDecryptPanelConstraints.insets.set(inset, inset, inset, inset * 2);
+        addFileDecryptPanelConstraints.insets.set(inset, inset * 2, inset, inset * 2);
         addFileDecryptPanelConstraints.fill = GridBagConstraints.BOTH;
         this.add(addFileDecryptPanel, addFileDecryptPanelConstraints);
 

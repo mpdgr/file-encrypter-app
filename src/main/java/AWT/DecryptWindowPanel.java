@@ -20,7 +20,7 @@ public class DecryptWindowPanel extends JPanel {
 
         this.add(scrollPanel, BorderLayout.CENTER);
         String[] strings = new String[]
-                {"kot", "pies", "małpa", "ryba","lew", "pantera", "słoń", "mysz", "hiena", "łoś"};
+                {"kot", "pies", "lew", "pantera", "słoń", "mysz", "hiena", "łoś"};
         JList<String> list = new JList<>(strings);
         Font sizedFont = Config.getFont().deriveFont(13f);
         list.setFont(sizedFont);
@@ -29,6 +29,10 @@ public class DecryptWindowPanel extends JPanel {
         scrollPanel.setViewportView(list);
         scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        CryptScrollBarUI scrollBarUI = new CryptScrollBarUI();
+        scrollPanel.getVerticalScrollBar().setUI(scrollBarUI);
+        scrollBarUI.uninstallComponents();
 
     }
 }
