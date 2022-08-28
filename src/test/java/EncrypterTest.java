@@ -13,8 +13,8 @@ class EncrypterTest {
 
     @Test
     void encryptFile() throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        SecretKey key = Encrypter.generateKey(256);
-        Encrypter.encryptFile(key);
-        Encrypter.decryptFile(key);
+//        SecretKey key = model.Encrypter.generateKey(256);
+//        model.Encrypter.encryptFile(key);
+//        model.Encrypter.decryptFile(key);
     }
 }
