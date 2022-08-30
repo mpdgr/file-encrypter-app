@@ -14,7 +14,7 @@ import java.security.spec.InvalidKeySpecException;
 
 public class Encrypter {
 
-    public static void encryptFile(String inputFilePath, String outputFilePath, char[] password)
+    public void encryptFile(String inputFilePath, String outputFilePath, char[] password)
             throws IOException, NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException,
             IllegalBlockSizeException, InvalidKeySpecException {
@@ -64,7 +64,7 @@ public class Encrypter {
         outputStream.close();
     }
 
-    public static void decryptFile(String inputFilePath, String outputFilePath, char[] password)
+    public void decryptFile(String inputFilePath, String outputFilePath, char[] password)
             throws IOException, NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException,
             IllegalBlockSizeException, InvalidKeySpecException {
