@@ -3,13 +3,15 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class CryptMessageDialog extends JDialog {
+public class FinishedMessageDialog extends JDialog {
     //default size
-    private final static int WIDTH = Config.getScreenHeight() / 6;
-    private final static int HEIGHT = Config.getScreenHeight() / 10;
+    private final static int WIDTH = Config.getScreenHeight() / 4;
+    private final static int HEIGHT = Config.getScreenHeight() / 8;
 
-    public CryptMessageDialog(Frame owner, boolean modal, String label) {
+
+    public FinishedMessageDialog(Frame owner, boolean modal, String label) {
         super(owner, modal);
+
         setSize(WIDTH,HEIGHT);
         setResizable(false);
         setTitle("FileCrypt");
@@ -20,13 +22,13 @@ public class CryptMessageDialog extends JDialog {
 
         BorderLayout borderLayout = new BorderLayout();
         messagePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        messagePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JLabel messageLabel = new JLabel(label);
-        Font sizedFont = Config.getFont().deriveFont(13f);
+        Font sizedFont = Config.getFont().deriveFont(15f);
         messageLabel.setFont(sizedFont);
 
         int y = (int)(CryptFrame.getHEIGHT() * 0.1);
-        JButton button = new JButton("Ok");
+        JButton button = new JButton("OK");
         Font sizedButtonFont = Config.getFontBold().deriveFont(11f);
         button.setFont(sizedButtonFont);
         button.setPreferredSize(new Dimension(y + y / 4, y / 3 + y / 8));
@@ -35,6 +37,7 @@ public class CryptMessageDialog extends JDialog {
         button.setForeground(Color.white);
         button.setMargin(new Insets(0, 0, 0, 0));
         button.addActionListener(event -> this.dispose());
+
         messagePanel.add(messageLabel);
         messagePanel.add(button);
         add(messagePanel);

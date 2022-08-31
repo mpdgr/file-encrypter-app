@@ -1,7 +1,5 @@
 package view;
 
-import controller.AppActions;
-
 import javax.swing.*;
 import java.awt.*;
 

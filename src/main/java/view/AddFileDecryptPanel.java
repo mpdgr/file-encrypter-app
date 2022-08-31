@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 
 public class AddFileDecryptPanel extends JPanel {
@@ -22,11 +23,10 @@ public class AddFileDecryptPanel extends JPanel {
         JButton buttonRemove = new AddRemoveButton("Remove files");
         this.add(buttonRemove);
 
-
-
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException | InstantiationException |
+                IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
 
@@ -34,17 +34,20 @@ public class AddFileDecryptPanel extends JPanel {
         fileChooserAdd.setMultiSelectionEnabled(true);
         fileChooserAdd.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
+        fileChooserAdd.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Encrypted files", "enc");
+        fileChooserAdd.addChoosableFileFilter(filter);
+
         JFileChooser fileChooserRemove = new JFileChooser();
         fileChooserRemove.setMultiSelectionEnabled(true);
         fileChooserRemove.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException | InstantiationException |
+                IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-
-
 
         this.buttonAdd = buttonAdd;
         this.buttonRemove = buttonRemove;
@@ -56,31 +59,16 @@ public class AddFileDecryptPanel extends JPanel {
         return buttonAdd;
     }
 
-    public void setButtonAdd(JButton buttonAdd) {
-        this.buttonAdd = buttonAdd;
-    }
-
     public JButton getButtonRemove() {
         return buttonRemove;
-    }
-
-    public void setButtonRemove(JButton buttonRemove) {
-        this.buttonRemove = buttonRemove;
     }
 
     public JFileChooser getFileChooserAdd() {
         return fileChooserAdd;
     }
 
-    public void setFileChooserAdd(JFileChooser fileChooserAdd) {
-        this.fileChooserAdd = fileChooserAdd;
-    }
-
     public JFileChooser getFileChooserRemove() {
         return fileChooserRemove;
     }
 
-    public void setFileChooserRemove(JFileChooser fileChooserRemove) {
-        this.fileChooserRemove = fileChooserRemove;
-    }
 }

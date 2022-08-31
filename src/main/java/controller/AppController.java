@@ -75,8 +75,6 @@ public class AppController {
                     decryptListModel.remove(i);
                 }
             });
-//            CryptPassword passwordField = new CryptPassword();
-//            passwordField.addActionListener();
 
             frame.setVisible(true);
 
@@ -85,26 +83,50 @@ public class AppController {
             JButton encryptPassButton = encryptPassDialog.getButton();
             JButton decryptPassButton = decryptPassDialog.getButton();
 
+            encryptPassButton.addActionListener(event -> {
+                encryptPassDialog.updatePassword();
+                if (encryptPassDialog.getPassword().length ==0) {
+                    new CryptMessageDialog(frame, true, "Password cannot be empty");
+                }
+                else {
+                    EncryptionController encryptionController = new EncryptionController();
+                    encryptionController.runEncrypt(encryptListModel, encryptPassDialog.getPassword());
+                    encryptPassDialog.setVisible(false);
+                    encryptListModel.clear();
+                    new FinishedMessageDialog(frame, true, "       Encryption complete!       ");
+                }
+            });
+
             encryptButton.addActionListener(event -> {
                 if (encryptListModel.isEmpty()) {
                     new CryptMessageDialog(frame, true, "Add files to encrypt");
                 } else {
-                    encryptPassDialog.setVisible(true);
+                    encryptPassDialog.showDialog();
                 }
             });
 
-            encryptPassButton.addActionListener(event -> runDecrypt(encryptListModel, password));
-            decryptPassButton.addActionListener(event -> runEncrypt(decryptListModel, password));
+            decryptPassButton.addActionListener(event -> {
+                decryptPassDialog.updatePassword();
+                if (decryptPassDialog.getPassword().length ==0) {
+                    new CryptMessageDialog(frame, true, "Password cannot be empty");
+                }
+                else {
+                    EncryptionController encryptionController = new EncryptionController();
+                    encryptionController.runDecrypt(encryptListModel, decryptPassDialog.getPassword());
+                    decryptPassDialog.setVisible(false);
+                    decryptListModel.clear();
+                    new FinishedMessageDialog(frame, true, "       Decryption complete!       ");
+                }
+            });
 
-
-//            decryptButton.addActionListener(event -> encryptPassDialog = new CryptPasswordDialog(frame, true, "Decrypt!"));
-
-
-
-
+            decryptButton.addActionListener(event -> {
+                if (decryptListModel.isEmpty()) {
+                    new CryptMessageDialog(frame, true, "Add files to decrypt");
+                } else {
+                    decryptPassDialog.showDialog();
+                }
+            });
         });
-
-
     }
-    }
+}
 

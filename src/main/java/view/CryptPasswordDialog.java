@@ -8,14 +8,33 @@ public class CryptPasswordDialog extends JDialog{
     private final static int WIDTH = Config.getScreenHeight() / 4;
     private final static int HEIGHT = Config.getScreenHeight() / 8;
 
-    JButton button;
+    private JButton button;
+    private char[] password;
+    private JPasswordField passwordField;
+    private Frame owner;
 
     public JButton getButton() {
         return button;
     }
 
+    public char[] getPassword() {
+        return password;
+    }
+
+    public void updatePassword(){
+        password = passwordField.getPassword();
+        passwordField.setText("");
+    }
+
+    public void showDialog(){
+        setLocationRelativeTo(owner);
+        setVisible(true);
+    }
+
+
     public CryptPasswordDialog(Frame owner, boolean modal, String buttonLabel) {
         super(owner, modal);
+        this.owner = owner;
         setSize(WIDTH,HEIGHT);
         setResizable(false);
         setTitle("FileCrypt");
@@ -25,13 +44,15 @@ public class CryptPasswordDialog extends JDialog{
         passwordPanel.setBackground(Config.getColor());
 
         BorderLayout borderLayout = new BorderLayout();
-//        passwordPanel.setLayout(borderLayout);
         passwordPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        JPasswordField passwordField = new JPasswordField(16);
+        passwordField = new JPasswordField(16);
+
+//        this.password = passwordField.getPassword();
+
         passwordPanel.add(passwordField);
         JLabel passwordLabel = new JLabel("Input password:");
 //        passwordLabel.set
-        Font sizedFont = Config.getFontBold().deriveFont(13f);
+        Font sizedFont = Config.getFont().deriveFont(15f);
         passwordLabel.setFont(sizedFont);
 
         int y = (int)(CryptFrame.getHEIGHT() * 0.1);
@@ -43,14 +64,7 @@ public class CryptPasswordDialog extends JDialog{
         button.setBackground(new Color(240, 112, 26));
         button.setForeground(Color.white);
         button.setMargin(new Insets(0, 0, 0, 0));
-//        button.addActionListener(event -> AppActions.encryptFiles());
         this.button = button;
-
-//            l1.setBounds(20,100, 80,30);
-//            passwordField.setBounds(100,100,100,30);
-//            add(passwordField);  passwordField.add(l1);
-//        passwordField.setSize(300,300);
-//        passwordField.setLayout(null);
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
         passwordPanel.add(button);
