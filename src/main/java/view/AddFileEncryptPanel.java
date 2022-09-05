@@ -1,7 +1,10 @@
 package view;
 
+import model.AppProperties;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class AddFileEncryptPanel extends JPanel {
     JButton buttonAdd;
@@ -30,11 +33,12 @@ public class AddFileEncryptPanel extends JPanel {
 
         JFileChooser fileChooserAdd = new JFileChooser();
         fileChooserAdd.setMultiSelectionEnabled(true);
+        fileChooserAdd.setCurrentDirectory(new File(AppProperties.getCurrentWorkdir()));
         fileChooserAdd.setFileSelectionMode(JFileChooser.FILES_ONLY);
-//        buttonAdd.addActionListener(event -> fileChooserAdd.showOpenDialog(this));
 
         JFileChooser fileChooserRemove = new JFileChooser();
         fileChooserRemove.setMultiSelectionEnabled(true);
+        fileChooserRemove.setCurrentDirectory(new File(AppProperties.getCurrentWorkdir()));
         fileChooserRemove.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         try {
@@ -43,46 +47,25 @@ public class AddFileEncryptPanel extends JPanel {
             e.printStackTrace();
         }
 
-
-//        buttonRemove.addActionListener(event -> fileChooserRemove.showOpenDialog(this));
-
         this.buttonAdd = buttonAdd;
         this.buttonRemove = buttonRemove;
         this.fileChooserAdd = fileChooserAdd;
         this.fileChooserRemove = fileChooserRemove;
-
-        System.out.println(buttonAdd);
     }
 
     public JButton getButtonAdd() {
         return buttonAdd;
     }
 
-    public void setButtonAdd(JButton buttonAdd) {
-        this.buttonAdd = buttonAdd;
-    }
-
     public JButton getButtonRemove() {
         return buttonRemove;
-    }
-
-    public void setButtonRemove(JButton buttonRemove) {
-        this.buttonRemove = buttonRemove;
     }
 
     public JFileChooser getFileChooserAdd() {
         return fileChooserAdd;
     }
 
-    public void setFileChooserAdd(JFileChooser fileChooserAdd) {
-        this.fileChooserAdd = fileChooserAdd;
-    }
-
     public JFileChooser getFileChooserRemove() {
         return fileChooserRemove;
-    }
-
-    public void setFileChooserRemove(JFileChooser fileChooserRemove) {
-        this.fileChooserRemove = fileChooserRemove;
     }
 }

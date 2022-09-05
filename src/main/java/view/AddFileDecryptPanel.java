@@ -1,8 +1,11 @@
 package view;
 
+import model.AppProperties;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.io.File;
 
 public class AddFileDecryptPanel extends JPanel {
     JButton buttonAdd;
@@ -32,6 +35,7 @@ public class AddFileDecryptPanel extends JPanel {
 
         JFileChooser fileChooserAdd = new JFileChooser();
         fileChooserAdd.setMultiSelectionEnabled(true);
+        fileChooserAdd.setCurrentDirectory(new File(AppProperties.getCurrentWorkdir()));
         fileChooserAdd.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         fileChooserAdd.setAcceptAllFileFilterUsed(false);
@@ -40,6 +44,7 @@ public class AddFileDecryptPanel extends JPanel {
 
         JFileChooser fileChooserRemove = new JFileChooser();
         fileChooserRemove.setMultiSelectionEnabled(true);
+        fileChooserRemove.setCurrentDirectory(new File(AppProperties.getCurrentWorkdir()));
         fileChooserRemove.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         try {

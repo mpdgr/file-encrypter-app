@@ -44,10 +44,11 @@ public class Encrypter {
         File outputFile = new File(outputFilePath);
         FileOutputStream outputStream = new FileOutputStream(outputFile);
 
-        /* save iv and salt at the beginning of the output */
+        /* write iv and salt at the beginning of the output */
         outputStream.write(ivBytes);
         outputStream.write(salt);
 
+        /* write encrypted file into the output */
         byte[] buffer = new byte[64];
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) != -1) {

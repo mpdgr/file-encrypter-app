@@ -64,6 +64,7 @@ public class DecryptWindowPanel extends JPanel {
 
         CryptScrollBarUI scrollBarUI = new CryptScrollBarUI();
         scrollPanel.getVerticalScrollBar().setUI(scrollBarUI);
+        scrollPanel.getHorizontalScrollBar().setUI(scrollBarUI);
         scrollBarUI.uninstallComponents();
         scrollBarUI.removeGap();
 

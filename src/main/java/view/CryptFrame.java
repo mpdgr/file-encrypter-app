@@ -6,8 +6,8 @@ import java.awt.*;
 public class CryptFrame extends JFrame {
 
     //default size
-    private final static int WIDTH = Config.getScreenHeight() / 2;
-    private final static int HEIGHT = Config.getScreenHeight() / 2;
+    private final static int WIDTH = Config.getSizeReference() / 2;
+    private final static int HEIGHT = Config.getSizeReference() / 2;
 
     public CryptFrame() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -15,7 +15,8 @@ public class CryptFrame extends JFrame {
         setSize(WIDTH,HEIGHT);
         setResizable(false);
         setTitle("FileCrypt");
-        setIconImage(new ImageIcon("src/main/resources/icons/crypticon.png").getImage());
+        setIconImage(Config.getIcon().getImage());
+//        setIconImage(new ImageIcon("src/main/resources/icons/crypticon.png").getImage());
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(new Color(217, 221, 224));
         menuBar.setBorder(BorderFactory.createEmptyBorder());

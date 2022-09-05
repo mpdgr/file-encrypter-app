@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class CryptPasswordDialog extends JDialog{
     //default size
-    private final static int WIDTH = Config.getScreenHeight() / 4;
-    private final static int HEIGHT = Config.getScreenHeight() / 8;
+    private final static int WIDTH = Config.getSizeReference() / 4;
+    private final static int HEIGHT = Config.getSizeReference() / 8;
 
     private JButton button;
     private char[] password;

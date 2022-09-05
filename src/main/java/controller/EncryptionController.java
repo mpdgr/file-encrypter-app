@@ -41,6 +41,26 @@ public class EncryptionController {
     }
 
     String runDecrypt (DefaultListModel<File> listModel, char[] password){
+        File[] files = new File[listModel.getSize()];
+        listModel.copyInto(files);
+        for (File f : files){
+            String parent = f.getParent();
+            String fileName = f.getName();
+            String outputParent = getTargetDir(parent);
+            String outputFileName = outputParent + '/' + fileName.replaceFirst(".enc", "");
+
+            Encrypter encrypter = new Encrypter();
+            //noinspection TryWithIdenticalCatches
+            try {
+                encrypter.decryptFile(f.getPath(), outputFileName, password);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidAlgorithmParameterException |
+                    InvalidKeyException | BadPaddingException | IllegalBlockSizeException |
+                    InvalidKeySpecException e) {
+                e.printStackTrace();
+            }
+        }
         System.out.println(Arrays.toString(password));
         return "test";
     }

@@ -24,10 +24,10 @@ public class TitlePanel extends JPanel {
         JLabel label = new JLabel(" FileCrypt ");
         label.setFont(sizedFont);
 
-        BufferedImage logo = null;
-        try {
-            logo = ImageIO.read(new File("src/main/resources/icons/crypticon.png"));
-        } catch (IOException ignored) {}
+        BufferedImage logo = Config.getLogo();
+//        try {
+//            logo = ImageIO.read(new File("src/main/resources/icons/crypticon.png"));
+//        } catch (IOException ignored) {}
 
         Image scaledLogo = null;
         if (logo != null) {

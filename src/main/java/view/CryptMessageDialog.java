@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class CryptMessageDialog extends JDialog {
     //default size
-    private final static int WIDTH = Config.getScreenHeight() / 6;
-    private final static int HEIGHT = Config.getScreenHeight() / 10;
+    private final static int WIDTH = Config.getSizeReference() / 6;
+    private final static int HEIGHT = Config.getSizeReference() / 10;
 
     public CryptMessageDialog(Frame owner, boolean modal, String label) {
         super(owner, modal);
