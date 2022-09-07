@@ -1,5 +1,7 @@
 package view;
 
+import config.Config;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,26 +18,6 @@ public class CryptFrame extends JFrame {
         setResizable(false);
         setTitle("FileCrypt");
         setIconImage(Config.getIcon().getImage());
-//        setIconImage(new ImageIcon("src/main/resources/icons/crypticon.png").getImage());
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.setBackground(new Color(217, 221, 224));
-        menuBar.setBorder(BorderFactory.createEmptyBorder());
-        JMenu file = new JMenu("   File");
-        Font sizedFont = Config.getFont().deriveFont(14f);
-        file.setFont(sizedFont);
-        JMenu options = new JMenu("Options");
-        options.setFont(sizedFont);
-        JMenu settings = new JMenu("Settings");
-        settings.setFont(sizedFont);
-        JMenu about = new JMenu("About");
-        about.setFont(sizedFont);
-        menuBar.add(file);
-        menuBar.add(options);
-        menuBar.add(settings);
-        menuBar.add(about);
-        menuBar.setEnabled(true);
-        menuBar.setVisible(true);
-        this.setJMenuBar(menuBar);
     }
 
     public static int getWIDTH() {

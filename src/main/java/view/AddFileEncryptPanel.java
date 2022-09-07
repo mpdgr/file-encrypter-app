@@ -1,6 +1,7 @@
 package view;
 
-import model.AppProperties;
+import config.AppProperties;
+import config.Config;
 
 import javax.swing.*;
 import java.awt.*;

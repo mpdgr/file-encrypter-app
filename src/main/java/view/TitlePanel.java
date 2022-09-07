@@ -1,11 +1,10 @@
 package view;
 
-import javax.imageio.ImageIO;
+import config.Config;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class TitlePanel extends JPanel {
     public TitlePanel() {
@@ -25,9 +24,6 @@ public class TitlePanel extends JPanel {
         label.setFont(sizedFont);
 
         BufferedImage logo = Config.getLogo();
-//        try {
-//            logo = ImageIO.read(new File("src/main/resources/icons/crypticon.png"));
-//        } catch (IOException ignored) {}
 
         Image scaledLogo = null;
         if (logo != null) {

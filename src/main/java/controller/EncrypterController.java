@@ -1,5 +1,6 @@
 package controller;
 
+import config.AppProperties;
 import model.Encrypter;
 
 import javax.crypto.BadPaddingException;
@@ -12,10 +13,9 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
 
-public class EncryptionController {
-    String runEncrypt (DefaultListModel<File> listModel, char[] password){
+public class EncrypterController {
+    void runEncrypt (DefaultListModel<File> listModel, char[] password){
         File[] files = new File[listModel.getSize()];
         listModel.copyInto(files);
         for (File f : files){
@@ -36,11 +36,9 @@ public class EncryptionController {
                 e.printStackTrace();
             }
         }
-        System.out.println(Arrays.toString(password));
-        return "test";
     }
 
-    String runDecrypt (DefaultListModel<File> listModel, char[] password){
+    void runDecrypt (DefaultListModel<File> listModel, char[] password){
         File[] files = new File[listModel.getSize()];
         listModel.copyInto(files);
         for (File f : files){
@@ -61,13 +59,10 @@ public class EncryptionController {
                 e.printStackTrace();
             }
         }
-        System.out.println(Arrays.toString(password));
-        return "test";
     }
 
     String getTargetDir(String inputParent){
-        return inputParent;
-//        TODO: targetDir options
+        return AppProperties.getSaveOption().equals(AppProperties.SaveOption.saveInDefaultDir) ?
+            AppProperties.getDefaultDir() : inputParent;
     }
-
 }

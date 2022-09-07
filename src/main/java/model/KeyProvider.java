@@ -18,27 +18,5 @@ public class KeyProvider {
     }
 }
 
-    //TODO: password overwrite
-
-//    public static SecretKey generateKey(char[] password, byte[] salt)
-//            throws NoSuchAlgorithmException, InvalidKeySpecException {
-//
-//        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-//        KeySpec keySpec = new PBEKeySpec(password, salt, 65536, 256);
-//        return new SecretKeySpec(keyFactory.generateSecret(keySpec).getEncoded(), "AES");
-//    }
-//
-//    public static SecretKey getKeyFromPassword(char[] password)
-//            throws NoSuchAlgorithmException, InvalidKeySpecException {
-//
-//        byte[] salt = new byte[16];
-//        SecureRandom rand = new SecureRandom();
-//        rand.nextBytes(salt);
-//
-//        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-//        KeySpec keySpec = new PBEKeySpec(password, salt, 65536, 256);
-//        return new SecretKeySpec(keyFactory.generateSecret(keySpec).getEncoded(), "AES");
-//    }
-
 
 

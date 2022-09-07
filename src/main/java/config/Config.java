@@ -1,6 +1,4 @@
-package view;
-
-import model.AppProperties;
+package config;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -20,10 +18,12 @@ public class Config {
 
     /* size reference */
 
-    private static final int SIZE_REFERENCE = SCREEN_HEIGHT;
-
     public static int getSizeReference() {
-        return SCREEN_HEIGHT;
+        int reference = 0;
+        if (SCREEN_HEIGHT >= 1080){reference = SCREEN_HEIGHT;}
+        else if (SCREEN_HEIGHT >= 540){reference = 1080;}
+        else {reference = SCREEN_HEIGHT * 2;}        //max frame size is screen height * 0.5
+        return reference;
     }
 
     /* default fonts */
@@ -62,10 +62,11 @@ public class Config {
     private static BufferedImage logo;
 
     static {
-        InputStream imgStream = AppProperties.class.getResourceAsStream("/icons/crypticon.png");
+        InputStream imgStreamIcon = AppProperties.class.getResourceAsStream("/icons/crypticon.png");
+        InputStream imgStreamLogo = AppProperties.class.getResourceAsStream("/icons/crypticon.png");
         try {
-            icon = new ImageIcon(imgStream.readAllBytes());
-            logo = ImageIO.read(imgStream);
+            icon = new ImageIcon(imgStreamIcon.readAllBytes());
+            logo = ImageIO.read(imgStreamLogo);
         } catch (IOException e) {
             e.printStackTrace();
         }
