@@ -1,7 +1,6 @@
 package view;
 
 import config.Config;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -41,7 +40,6 @@ public class FinishedMessageDialog extends JDialog {
         messagePanel.add(button);
 
         add(messagePanel);
-
         setVisible(true);
     }
 }

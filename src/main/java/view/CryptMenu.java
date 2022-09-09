@@ -30,21 +30,21 @@ public class CryptMenu extends JMenuBar {
         file.setFont(sizedFont);
         file.setBorderPainted(false);
 
-        this.encrypt = new JMenuItem("   Encrypt");
+        encrypt = new JMenuItem("   Encrypt");
         encrypt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
         menuItemFormat(encrypt);
 
-        this.decrypt = new JMenuItem("   Decrypt");
+        decrypt = new JMenuItem("   Decrypt");
         decrypt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
         menuItemFormat(decrypt);
 
-        this.openDefaultDir = new JMenuItem("   Open default folder");
+        openDefaultDir = new JMenuItem("   Open default folder");
         menuItemFormat(openDefaultDir);
         if (AppProperties.getDefaultDir().isBlank()){
             openDefaultDir.setEnabled(false);
         }
 
-        this.exit = new JMenuItem("   Exit");
+        exit = new JMenuItem("   Exit");
         menuItemFormat(exit);
 
         file.add(encrypt);
@@ -60,11 +60,11 @@ public class CryptMenu extends JMenuBar {
         options.setFont(sizedFont);
         options.setBorderPainted(false);
 
-        this.saveInCurrentDir = new JRadioButtonMenuItem("Save files in current folder");
+        saveInCurrentDir = new JRadioButtonMenuItem("Save files in current folder");
         menuItemFormat(saveInCurrentDir);
         saveInCurrentDir.setSelected(true);
 
-        this.saveInDefaultDir = new JRadioButtonMenuItem("Save files in default folder");
+        saveInDefaultDir = new JRadioButtonMenuItem("Save files in default folder");
         menuItemFormat(saveInDefaultDir);
         if (AppProperties.getDefaultDir().isBlank()){
             saveInDefaultDir.setEnabled(false);
@@ -83,7 +83,7 @@ public class CryptMenu extends JMenuBar {
         settings.setFont(sizedFont);
         settings.setBorderPainted(false);
 
-        this.setDefaultDir = new JMenuItem("Set default folder");
+        setDefaultDir = new JMenuItem("Set default folder");
         menuItemFormat(setDefaultDir);
         settings.add(setDefaultDir);
 
@@ -93,7 +93,7 @@ public class CryptMenu extends JMenuBar {
         about.setFont(sizedFont);
         about.setBorderPainted(false);
 
-        this.aboutFileCrypt = new JMenuItem("About FileCrypt");
+        aboutFileCrypt = new JMenuItem("About FileCrypt");
         menuItemFormat(aboutFileCrypt);
         about.add(aboutFileCrypt);
 

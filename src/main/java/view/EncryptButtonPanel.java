@@ -1,7 +1,6 @@
 package view;
 
 import config.Config;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,9 +8,9 @@ public class EncryptButtonPanel extends JPanel {
     private final JButton button;
 
     public EncryptButtonPanel() {
-        this.setBackground(Config.getColor());
+        setBackground(Config.getColor());
         int y = (int)(CryptFrame.getHEIGHT() * 0.1);
-        this.setPreferredSize(new Dimension(0, y));
+        setPreferredSize(new Dimension(0, y));
 
         Font sizedFont = Config.getFontBold().deriveFont(12f);
         JButton button = new JButton("Encrypt!");
@@ -22,7 +21,7 @@ public class EncryptButtonPanel extends JPanel {
         button.setForeground(Color.white);
         button.setMargin(new Insets(0, 0, 0, 0));
 
-        this.add(button);
+        add(button);
         this.button = button;
     }
 

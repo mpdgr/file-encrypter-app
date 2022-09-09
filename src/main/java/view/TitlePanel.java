@@ -7,14 +7,14 @@ import java.awt.image.BufferedImage;
 
 public class TitlePanel extends JPanel {
     public TitlePanel() {
-        this.setBackground(Config.getColor());
+        setBackground(Config.getColor());
         BorderLayout borderLayout = new BorderLayout();
-        this.setLayout(borderLayout);
-        this.setAlignmentY(Component.CENTER_ALIGNMENT);
+        setLayout(borderLayout);
+        setAlignmentY(Component.CENTER_ALIGNMENT);
 
         int y = (int)(CryptFrame.getHEIGHT() * 0.18);
         int dLogo = (int)(y * 0.4);
-        this.setPreferredSize(new Dimension(0, y));
+        setPreferredSize(new Dimension(0, y));
         Font sizedFont = Config.getFont().deriveFont(35f);
         JLabel label = new JLabel(" FileCrypt ");
         label.setFont(sizedFont);

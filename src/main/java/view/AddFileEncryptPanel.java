@@ -13,17 +13,17 @@ public class AddFileEncryptPanel extends JPanel {
     JFileChooser fileChooserRemove;
 
     public AddFileEncryptPanel() {
-        this.setBackground(Config.getColor());
+        setBackground(Config.getColor());
 
         FlowLayout layout = new FlowLayout();
         layout.setAlignment(FlowLayout.LEFT);
-        this.setLayout(layout);
+        setLayout(layout);
 
         JButton buttonAdd = new AddRemoveButton("Add files...");
-        this.add(buttonAdd);
+        add(buttonAdd);
 
         JButton buttonRemove = new AddRemoveButton("Remove files");
-        this.add(buttonRemove);
+        add(buttonRemove);
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

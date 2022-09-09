@@ -10,9 +10,9 @@ public class EncryptWindowPanel extends JPanel {
     private final DefaultListModel<File> listModel;
 
     public EncryptWindowPanel() {
-        this.setBackground(Config.getColor());
+        setBackground(Config.getColor());
         int y = (int)(CryptFrame.getHEIGHT() * 0.35);
-        this.setPreferredSize(new Dimension(0, y));
+        setPreferredSize(new Dimension(0, y));
 
         JScrollPane scrollPanel = new JScrollPane();
         int scrollPanelX = (int)(CryptFrame.getHEIGHT() * 0.43);
@@ -20,7 +20,7 @@ public class EncryptWindowPanel extends JPanel {
         scrollPanel.setPreferredSize(new Dimension(scrollPanelX,scrollPanelY));
         scrollPanel.setBackground(new Color(144, 238, 144));
         scrollPanel.setBorder(BorderFactory.createLoweredBevelBorder());
-        this.add(scrollPanel, BorderLayout.CENTER);
+        add(scrollPanel, BorderLayout.CENTER);
 
         DefaultListModel<File> listModel = new DefaultListModel<>();
         JList<File> fileList = new JList<>(listModel);

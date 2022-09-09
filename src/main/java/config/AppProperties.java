@@ -71,9 +71,8 @@ public class AppProperties {
     /* Store properties */
 
     public static void storeProperties() {
-        String propertiesPath = Objects.requireNonNull(AppProperties.class
-                        .getResource("/properties/app.properties"))
-                .getPath();
+        String propertiesPath = Objects.requireNonNull(AppProperties.class.
+                getResource("/properties/app.properties")).getPath();
         try {
             appProperties.store(new FileOutputStream(new File(propertiesPath)), "update properties");
         } catch (IOException e) {

@@ -27,7 +27,7 @@ public class CryptPasswordDialog extends JDialog{
         passwordPanel.setBackground(Config.getColor());
         passwordPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        this.passwordField = new JPasswordField(16);
+        passwordField = new JPasswordField(16);
         passwordPanel.add(passwordField);
 
         JLabel passwordLabel = new JLabel("Input password:");

@@ -13,11 +13,11 @@ public class MainPanel extends JPanel {
     private final DecryptButtonPanel decryptButtonPanel;
 
     public MainPanel(){
-        this.setSize(CryptFrame.getWIDTH(), CryptFrame.getHEIGHT());
-        this.setBackground(Config.getColor());
+        setSize(CryptFrame.getWIDTH(), CryptFrame.getHEIGHT());
+        setBackground(Config.getColor());
 
         GridBagLayout GBLayout = new GridBagLayout();
-        this.setLayout(GBLayout);
+        setLayout(GBLayout);
         int inset = CryptFrame.getWIDTH() / 100;
 
         TitlePanel titlePanel = new TitlePanel();
@@ -27,7 +27,7 @@ public class MainPanel extends JPanel {
         titlePanelConstraints.gridy = 1;
         titlePanelConstraints.gridwidth = 2;
         titlePanelConstraints.insets.set(inset, inset * 2, inset, inset * 2);
-        this.add(titlePanel, titlePanelConstraints);
+        add(titlePanel, titlePanelConstraints);
 
         EncryptLabelPanel encryptLabelPanel = new EncryptLabelPanel();
         GridBagConstraints encryptLabelPanelConstraints = new GridBagConstraints();
@@ -35,7 +35,7 @@ public class MainPanel extends JPanel {
         encryptLabelPanelConstraints.gridx = 1;
         encryptLabelPanelConstraints.gridy = 2;
         encryptLabelPanelConstraints.insets.set(inset, inset * 2, inset, inset);
-        this.add(encryptLabelPanel, encryptLabelPanelConstraints);
+        add(encryptLabelPanel, encryptLabelPanelConstraints);
 
         DecryptLabelPanel decryptLabelPanel = new DecryptLabelPanel();
         GridBagConstraints decryptLabelPanelConstraints = new GridBagConstraints();
@@ -43,7 +43,7 @@ public class MainPanel extends JPanel {
         decryptLabelPanelConstraints.gridx = 2;
         decryptLabelPanelConstraints.gridy = 2;
         decryptLabelPanelConstraints.insets.set(inset, inset, inset, inset * 2);
-        this.add(decryptLabelPanel, decryptLabelPanelConstraints);
+        add(decryptLabelPanel, decryptLabelPanelConstraints);
 
         EncryptWindowPanel encryptWindowPanel = new EncryptWindowPanel();
         GridBagConstraints encryptWindowPanelConstraints = new GridBagConstraints();
@@ -51,7 +51,7 @@ public class MainPanel extends JPanel {
         encryptWindowPanelConstraints.gridx = 1;
         encryptWindowPanelConstraints.gridy = 3;
         encryptWindowPanelConstraints.insets.set(inset, inset * 2, inset, inset);
-        this.add(encryptWindowPanel, encryptWindowPanelConstraints);
+        add(encryptWindowPanel, encryptWindowPanelConstraints);
 
         DecryptWindowPanel decryptWindowPanel = new DecryptWindowPanel();
         GridBagConstraints decryptWindowPanelConstraints = new GridBagConstraints();
@@ -59,7 +59,7 @@ public class MainPanel extends JPanel {
         decryptWindowPanelConstraints.gridx = 2;
         decryptWindowPanelConstraints.gridy = 3;
         decryptWindowPanelConstraints.insets.set(inset, inset, inset, inset * 2);
-        this.add(decryptWindowPanel, decryptWindowPanelConstraints);
+        add(decryptWindowPanel, decryptWindowPanelConstraints);
 
         AddFileEncryptPanel addFileEncryptPanel = new AddFileEncryptPanel();
         GridBagConstraints addFileEncryptPanelConstraints = new GridBagConstraints();
@@ -67,7 +67,7 @@ public class MainPanel extends JPanel {
         addFileEncryptPanelConstraints.gridx = 1;
         addFileEncryptPanelConstraints.gridy = 4;
         addFileEncryptPanelConstraints.insets.set(inset, inset * 3, inset, inset);
-        this.add(addFileEncryptPanel, addFileEncryptPanelConstraints);
+        add(addFileEncryptPanel, addFileEncryptPanelConstraints);
 
         AddFileDecryptPanel addFileDecryptPanel = new AddFileDecryptPanel();
         GridBagConstraints addFileDecryptPanelConstraints = new GridBagConstraints();
@@ -75,7 +75,7 @@ public class MainPanel extends JPanel {
         addFileDecryptPanelConstraints.gridx = 2;
         addFileDecryptPanelConstraints.gridy = 4;
         addFileDecryptPanelConstraints.insets.set(inset, inset * 2, inset, inset * 2);
-        this.add(addFileDecryptPanel, addFileDecryptPanelConstraints);
+        add(addFileDecryptPanel, addFileDecryptPanelConstraints);
 
         EncryptButtonPanel encryptButtonPanel = new EncryptButtonPanel();
         GridBagConstraints encryptButtonPanelConstraints = new GridBagConstraints();
@@ -83,7 +83,7 @@ public class MainPanel extends JPanel {
         encryptButtonPanelConstraints.gridx = 1;
         encryptButtonPanelConstraints.gridy = 5;
         encryptButtonPanelConstraints.insets.set(inset, inset * 2, inset, inset);
-        this.add(encryptButtonPanel, encryptButtonPanelConstraints);
+        add(encryptButtonPanel, encryptButtonPanelConstraints);
 
         DecryptButtonPanel decryptButtonPanel = new DecryptButtonPanel();
         GridBagConstraints decryptButtonPanelConstraints = new GridBagConstraints();
@@ -91,7 +91,7 @@ public class MainPanel extends JPanel {
         decryptButtonPanelConstraints.gridx = 2;
         decryptButtonPanelConstraints.gridy = 5;
         decryptButtonPanelConstraints.insets.set(inset, inset, inset, inset * 2);
-        this.add(decryptButtonPanel, decryptButtonPanelConstraints);
+        add(decryptButtonPanel, decryptButtonPanelConstraints);
 
         this.encryptWindowPanel = encryptWindowPanel;
         this.addFileEncryptPanel = addFileEncryptPanel;
