@@ -2,7 +2,6 @@ package view;
 
 import config.AppProperties;
 import config.Config;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -38,7 +37,6 @@ public class AddFileDecryptPanel extends JPanel {
         fileChooserAdd.setMultiSelectionEnabled(true);
         fileChooserAdd.setCurrentDirectory(new File(AppProperties.getCurrentWorkdir()));
         fileChooserAdd.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
         fileChooserAdd.setAcceptAllFileFilterUsed(false);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Encrypted files", "enc");
         fileChooserAdd.addChoosableFileFilter(filter);

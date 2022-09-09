@@ -1,7 +1,6 @@
 package view;
 
 import config.Config;
-
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import java.awt.*;
@@ -9,23 +8,22 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class CryptAboutDialog extends JDialog{
-    //default size
     private final static int WIDTH = Config.getSizeReference() / 3;
     private final static int HEIGHT = Config.getSizeReference() / 5;
 
-    //TODO:ICON DIALOGS
     public CryptAboutDialog(Frame owner) throws IOException {
         super(owner, true);
+
         setSize(WIDTH, HEIGHT);
         setResizable(false);
         setTitle("FileCrypt");
         setLocationRelativeTo(owner);
-        setIconImage(new ImageIcon("src/main/resources/icons/crypticon.png").getImage());
+        setIconImage(Config.getIcon().getImage());
         JPanel messagePanel = new JPanel();
         messagePanel.setBackground(Config.getColor());
-
         messagePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
         messagePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         String about =
                 """
                 <html>

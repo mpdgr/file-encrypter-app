@@ -14,6 +14,7 @@ public class KeyProvider {
 
         SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
         KeySpec keySpec = new PBEKeySpec(password, salt, 65536, 256);
+
         return new SecretKeySpec(secretKeyFactory.generateSecret(keySpec).getEncoded(), "AES");
     }
 }

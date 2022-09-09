@@ -8,6 +8,7 @@ public class AppProperties {
     private static Properties appProperties;
 
     /* Load properties file */
+
     static {
         InputStream propertiesStream = AppProperties.class.getResourceAsStream("/properties/app.properties");
         Properties properties = new Properties();
@@ -32,8 +33,7 @@ public class AppProperties {
 
     /* Settings */
 
-    //set save option
-
+    //saving options
     public enum SaveOption {
         saveInCurrentDir,
         saveInDefaultDir;
@@ -53,13 +53,12 @@ public class AppProperties {
         storeProperties();
     }
 
-    public static SaveOption getSaveOption(){
+    public static SaveOption getSaveSetting(){
         return appProperties.getProperty("savein.defaultdir").equals("true") ?
                 SaveOption.saveInDefaultDir : SaveOption.saveInCurrentDir;
     }
 
     // default directory
-
     public static void setDefaultDir(String path) {
         appProperties.setProperty("dir.default", path);
         storeProperties();

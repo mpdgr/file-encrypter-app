@@ -2,14 +2,12 @@ package view;
 
 import config.AppProperties;
 import config.Config;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 public class CryptMenu extends JMenuBar {
-
     private final JMenuItem encrypt;
     private final JMenuItem decrypt;
     private final JMenuItem openDefaultDir;
@@ -18,8 +16,6 @@ public class CryptMenu extends JMenuBar {
     private final JRadioButtonMenuItem saveInDefaultDir;
     private final JMenuItem setDefaultDir;
     private final JMenuItem aboutFileCrypt;
-
-
 
     public CryptMenu(){
         super();
@@ -48,7 +44,7 @@ public class CryptMenu extends JMenuBar {
             openDefaultDir.setEnabled(false);
         }
 
-        exit = new JMenuItem("   Exit");
+        this.exit = new JMenuItem("   Exit");
         menuItemFormat(exit);
 
         file.add(encrypt);
@@ -76,7 +72,6 @@ public class CryptMenu extends JMenuBar {
 
         ButtonGroup saveGroup = new ButtonGroup();
         saveGroup.add(saveInCurrentDir);
-
         saveGroup.add(saveInDefaultDir);
 
         options.add(saveInCurrentDir);
@@ -88,7 +83,6 @@ public class CryptMenu extends JMenuBar {
         settings.setFont(sizedFont);
         settings.setBorderPainted(false);
 
-
         this.setDefaultDir = new JMenuItem("Set default folder");
         menuItemFormat(setDefaultDir);
         settings.add(setDefaultDir);
@@ -98,7 +92,6 @@ public class CryptMenu extends JMenuBar {
         JMenu about = new JMenu("About");
         about.setFont(sizedFont);
         about.setBorderPainted(false);
-        System.out.println(about.getUI());
 
         this.aboutFileCrypt = new JMenuItem("About FileCrypt");
         menuItemFormat(aboutFileCrypt);

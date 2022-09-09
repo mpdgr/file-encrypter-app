@@ -7,11 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class AppController {
     public static void main(String[] args) {
-
         EventQueue.invokeLater(() ->
         {
             CryptFrame frame = new CryptFrame();
@@ -21,25 +19,31 @@ public class AppController {
             CryptMenu menu = new CryptMenu();
             frame.setJMenuBar(menu);
 
+            //region Objects
+            /*buttons*/
             JButton addFilesToEncryptButton = mainPanel.getAddFileEncryptPanel().getButtonAdd();
             JButton removeFilesToEncryptButton = mainPanel.getAddFileEncryptPanel().getButtonRemove();
             JButton addFilesToDecryptButton = mainPanel.getAddFileDecryptPanel().getButtonAdd();
             JButton removeFilesToDecryptButton = mainPanel.getAddFileDecryptPanel().getButtonRemove();
-
-            DefaultListModel<File> encryptListModel = mainPanel.getEncryptWindowPanel().getListModel();
-            DefaultListModel<File> decryptListModel = mainPanel.getDecryptWindowPanel().getListModel();
-
-            JList<File> encryptList = mainPanel.getEncryptWindowPanel().getFileList();
-            JList<File> decryptList = mainPanel.getDecryptWindowPanel().getFileList();
-
             JButton encryptButton = mainPanel.getEncryptButtonPanel().getButton();
             JButton decryptButton = mainPanel.getDecryptButtonPanel().getButton();
 
+            /*lists*/
+            DefaultListModel<File> encryptListModel = mainPanel.getEncryptWindowPanel().getListModel();
+            DefaultListModel<File> decryptListModel = mainPanel.getDecryptWindowPanel().getListModel();
+            JList<File> encryptList = mainPanel.getEncryptWindowPanel().getFileList();
+            JList<File> decryptList = mainPanel.getDecryptWindowPanel().getFileList();
+
+            /*filechoosers*/
             JFileChooser fileChooserAddFilesToEncrypt = mainPanel.getAddFileEncryptPanel().getFileChooserAdd();
-
             JFileChooser fileChooserAddFilesToDecrypt = mainPanel.getAddFileDecryptPanel().getFileChooserAdd();
+            //endregion
 
-            addFilesToEncryptButton.addActionListener(event -> fileChooserAddFilesToEncrypt.showOpenDialog(mainPanel));
+            //region Action listeners
+            addFilesToEncryptButton.addActionListener(event ->
+                    fileChooserAddFilesToEncrypt.showOpenDialog(mainPanel)
+            );
+
             fileChooserAddFilesToEncrypt.addActionListener(event -> {
                 if (event.getActionCommand().equals("ApproveSelection")) {
                     for (File f : fileChooserAddFilesToEncrypt.getSelectedFiles()) {
@@ -47,18 +51,22 @@ public class AppController {
                     }
                     mainPanel.repaint();
                 }
-                AppProperties.setCurrentWorkdir(fileChooserAddFilesToEncrypt.getCurrentDirectory().getAbsolutePath());
+                AppProperties.setCurrentWorkdir(fileChooserAddFilesToEncrypt
+                        .getCurrentDirectory()
+                        .getAbsolutePath());
             });
+
             removeFilesToEncryptButton.addActionListener(event -> {
                 int[] toRemove = encryptList.getSelectedIndices();
-                System.out.println(Arrays.toString(toRemove));
-                System.out.println(encryptListModel);
                 for (int i : toRemove) {
                     encryptListModel.remove(i);
                 }
             });
 
-            addFilesToDecryptButton.addActionListener(event -> fileChooserAddFilesToDecrypt.showOpenDialog(mainPanel));
+            addFilesToDecryptButton.addActionListener(event ->
+                    fileChooserAddFilesToDecrypt.showOpenDialog(mainPanel)
+            );
+
             fileChooserAddFilesToDecrypt.addActionListener(event -> {
                 if (event.getActionCommand().equals("ApproveSelection")) {
                     for (File f : fileChooserAddFilesToDecrypt.getSelectedFiles()) {
@@ -66,7 +74,9 @@ public class AppController {
                     }
                     mainPanel.repaint();
                 }
-                AppProperties.setCurrentWorkdir(fileChooserAddFilesToDecrypt.getCurrentDirectory().getAbsolutePath());
+                AppProperties.setCurrentWorkdir(fileChooserAddFilesToDecrypt
+                        .getCurrentDirectory()
+                        .getAbsolutePath());
             });
 
             removeFilesToDecryptButton.addActionListener(event -> {
@@ -93,8 +103,6 @@ public class AppController {
                     new FinishedMessageDialog(frame, true, "       Encryption complete!       ");
                 }
             });
-
-
             ActionListener encryptListener = event ->
             {
                 if (encryptListModel.isEmpty()) {
@@ -117,7 +125,6 @@ public class AppController {
                     new FinishedMessageDialog(frame, true, "       Decryption complete!       ");
                 }
             });
-
             ActionListener decryptListener = event ->
             {
                 if (decryptListModel.isEmpty()) {
@@ -126,25 +133,28 @@ public class AppController {
                     decryptPassDialog.showDialog();
                 }
             };
-
             decryptButton.addActionListener(decryptListener);
+            //endregion
 
-
-            /* Menu actions */
-
+            //region Menu
+            /* Menu items */
+            //File
             JMenuItem encrypt = menu.getEncrypt();
             JMenuItem decrypt = menu.getDecrypt();
             JMenuItem openDefaultDir = menu.getOpenDefaultDir();
             JMenuItem exit = menu.getExit();
+            //Settings
             JRadioButtonMenuItem saveInCurrentDir = menu.getSaveInCurrentDir();
             JRadioButtonMenuItem saveInDefaultDir = menu.getSaveInDefaultDir();
+            //Options
             JMenuItem setDefaultFolder = menu.getSetDefaultDir();
+            //About
             JMenuItem aboutFileCrypt = menu.getAboutFileCrypt();
 
+            /* Menu action listeners */
+            //File
             encrypt.addActionListener(encryptListener);
-
             decrypt.addActionListener(decryptListener);
-
             openDefaultDir.addActionListener(event ->
             {
                 try {
@@ -153,29 +163,16 @@ public class AppController {
                     e.printStackTrace();
                 }
             });
-
             exit.addActionListener(event -> System.exit(0));
-
+            //Settings
             saveInCurrentDir.addActionListener(event ->
                     AppProperties.saveIn(AppProperties.SaveOption.saveInCurrentDir)
             );
             saveInDefaultDir.addActionListener(event ->
                     AppProperties.saveIn(AppProperties.SaveOption.saveInDefaultDir)
             );
-
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-                e.printStackTrace();
-            }
-
-            JFileChooser dirChooser = new JFileChooser();
-
-            try {
-                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-                e.printStackTrace();
-            }
+            //Options
+            JFileChooser dirChooser = new JFileChooser(); //TODO: UI update
             dirChooser.addActionListener(event ->
             {
                 if (event.getActionCommand().equals("ApproveSelection")) {
@@ -184,14 +181,13 @@ public class AppController {
                     saveInDefaultDir.setEnabled(true);
                 }
             });
-
             setDefaultFolder.addActionListener(event -> {
                 dirChooser.setMultiSelectionEnabled(false);
                 dirChooser.setCurrentDirectory(new File(AppProperties.getCurrentWorkdir()));
                 dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 dirChooser.showOpenDialog(mainPanel);
             });
-
+            //About
             aboutFileCrypt.addActionListener(event -> {
                 try {
                     new CryptAboutDialog(frame);
@@ -199,6 +195,7 @@ public class AppController {
                     e.printStackTrace();
                 }
             });
+            //endregion
 
             frame.setVisible(true);
         });

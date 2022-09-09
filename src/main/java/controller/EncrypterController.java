@@ -2,7 +2,6 @@ package controller;
 
 import config.AppProperties;
 import model.Encrypter;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
@@ -62,7 +61,7 @@ public class EncrypterController {
     }
 
     String getTargetDir(String inputParent){
-        return AppProperties.getSaveOption().equals(AppProperties.SaveOption.saveInDefaultDir) ?
+        return AppProperties.getSaveSetting().equals(AppProperties.SaveOption.saveInDefaultDir) ?
             AppProperties.getDefaultDir() : inputParent;
     }
 }

@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CryptMessageDialog extends JDialog {
-    //default size
     private final static int WIDTH = Config.getSizeReference() / 6;
     private final static int HEIGHT = Config.getSizeReference() / 10;
 
@@ -16,13 +15,13 @@ public class CryptMessageDialog extends JDialog {
         setResizable(false);
         setTitle("FileCrypt");
         setLocationRelativeTo(owner);
-        setIconImage(new ImageIcon("src/main/resources/icons/crypticon.png").getImage());
+        setIconImage(Config.getIcon().getImage());
+
         JPanel messagePanel = new JPanel();
         messagePanel.setBackground(Config.getColor());
-
-        BorderLayout borderLayout = new BorderLayout();
         messagePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
         messagePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JLabel messageLabel = new JLabel(label);
         Font sizedFont = Config.getFont().deriveFont(13f);
         messageLabel.setFont(sizedFont);
@@ -36,10 +35,14 @@ public class CryptMessageDialog extends JDialog {
         button.setBackground(new Color(240, 112, 26));
         button.setForeground(Color.white);
         button.setMargin(new Insets(0, 0, 0, 0));
+
         button.addActionListener(event -> this.dispose());
+
         messagePanel.add(messageLabel);
         messagePanel.add(button);
+
         add(messagePanel);
+
         setVisible(true);
     }
 }

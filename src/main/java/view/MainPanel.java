@@ -1,7 +1,6 @@
 package view;
 
 import config.Config;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,7 +13,6 @@ public class MainPanel extends JPanel {
     private final DecryptButtonPanel decryptButtonPanel;
 
     public MainPanel(){
-
         this.setSize(CryptFrame.getWIDTH(), CryptFrame.getHEIGHT());
         this.setBackground(Config.getColor());
 

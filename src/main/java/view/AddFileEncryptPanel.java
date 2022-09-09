@@ -2,7 +2,6 @@ package view;
 
 import config.AppProperties;
 import config.Config;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;

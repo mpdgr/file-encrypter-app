@@ -1,59 +1,36 @@
 package view;
 
 import config.Config;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class CryptPasswordDialog extends JDialog{
-    //default size
     private final static int WIDTH = Config.getSizeReference() / 4;
     private final static int HEIGHT = Config.getSizeReference() / 8;
 
-    private JButton button;
+    private final JButton button;
     private char[] password;
-    private JPasswordField passwordField;
-    private Frame owner;
-
-    public JButton getButton() {
-        return button;
-    }
-
-    public char[] getPassword() {
-        return password;
-    }
-
-    public void updatePassword(){
-        password = passwordField.getPassword();
-        passwordField.setText("");
-    }
-
-    public void showDialog(){
-        setLocationRelativeTo(owner);
-        setVisible(true);
-    }
-
+    private final JPasswordField passwordField;
+    private final Frame owner;
 
     public CryptPasswordDialog(Frame owner, boolean modal, String buttonLabel) {
         super(owner, modal);
         this.owner = owner;
+
         setSize(WIDTH,HEIGHT);
         setResizable(false);
         setTitle("FileCrypt");
         setLocationRelativeTo(owner);
-        setIconImage(new ImageIcon("src/main/resources/icons/crypticon.png").getImage());
+        setIconImage(Config.getIcon().getImage());
+
         JPanel passwordPanel = new JPanel();
         passwordPanel.setBackground(Config.getColor());
-
-        BorderLayout borderLayout = new BorderLayout();
         passwordPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        passwordField = new JPasswordField(16);
 
-//        this.password = passwordField.getPassword();
-
+        this.passwordField = new JPasswordField(16);
         passwordPanel.add(passwordField);
+
         JLabel passwordLabel = new JLabel("Input password:");
-//        passwordLabel.set
         Font sizedFont = Config.getFont().deriveFont(15f);
         passwordLabel.setFont(sizedFont);
 
@@ -67,10 +44,31 @@ public class CryptPasswordDialog extends JDialog{
         button.setForeground(Color.white);
         button.setMargin(new Insets(0, 0, 0, 0));
         this.button = button;
+
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
         passwordPanel.add(button);
+
         add(passwordPanel);
+
         setVisible(false);
+    }
+
+    public void updatePassword(){
+        password = passwordField.getPassword();
+        passwordField.setText("");
+    }
+
+    public void showDialog(){
+        setLocationRelativeTo(owner);
+        setVisible(true);
+    }
+
+    public JButton getButton() {
+        return button;
+    }
+
+    public char[] getPassword() {
+        return password;
     }
 }

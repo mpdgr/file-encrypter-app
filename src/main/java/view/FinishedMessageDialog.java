@@ -6,11 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class FinishedMessageDialog extends JDialog {
-
-    /* default size */
     private final static int WIDTH = Config.getSizeReference() / 4;
     private final static int HEIGHT = Config.getSizeReference() / 8;
-
 
     public FinishedMessageDialog(Frame owner, boolean modal, String label) {
         super(owner, modal);
@@ -19,11 +16,10 @@ public class FinishedMessageDialog extends JDialog {
         setResizable(false);
         setTitle("FileCrypt");
         setLocationRelativeTo(owner);
-        setIconImage(new ImageIcon("src/main/resources/icons/crypticon.png").getImage());
+        setIconImage(Config.getIcon().getImage());
+
         JPanel messagePanel = new JPanel();
         messagePanel.setBackground(Config.getColor());
-
-        BorderLayout borderLayout = new BorderLayout();
         messagePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
         JLabel messageLabel = new JLabel(label);
@@ -43,7 +39,9 @@ public class FinishedMessageDialog extends JDialog {
 
         messagePanel.add(messageLabel);
         messagePanel.add(button);
+
         add(messagePanel);
+
         setVisible(true);
     }
 }

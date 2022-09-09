@@ -1,17 +1,17 @@
 package view;
 
 import config.Config;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class DecryptButtonPanel extends JPanel {
-    JButton button;
+    private final JButton button;
 
     public DecryptButtonPanel() {
         this.setBackground(Config.getColor());
         int y = (int)(CryptFrame.getHEIGHT() * 0.1);
         this.setPreferredSize(new Dimension(0, y));
+
         Font sizedFont = Config.getFontBold().deriveFont(12f);
         JButton button = new JButton("Decrypt!");
         button.setFont(sizedFont);
@@ -26,9 +26,5 @@ public class DecryptButtonPanel extends JPanel {
 
     public JButton getButton() {
         return button;
-    }
-
-    public void setButton(JButton button) {
-        this.button = button;
     }
 }
