@@ -1,13 +1,11 @@
 import model.Encrypter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -76,7 +74,9 @@ class EncrypterTest {
         Encrypter encrypter = new Encrypter();
         try {
             encrypter.decryptFile(file.getPath(), outputPath, password);
-        } catch (IOException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidAlgorithmParameterException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException | InvalidKeySpecException e) {
+        } catch (IOException | NoSuchPaddingException | NoSuchAlgorithmException |
+                InvalidAlgorithmParameterException | InvalidKeyException | BadPaddingException |
+                IllegalBlockSizeException | InvalidKeySpecException e) {
             e.printStackTrace();
         }
         return new File(outputPath);
