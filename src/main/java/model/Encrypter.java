@@ -63,10 +63,6 @@ public class Encrypter {
         }
         inputStream.close();
         outputStream.close();
-
-        for (char c : password){
-            c = '0';
-        }
     }
 
     public void decryptFile(String inputFilePath, String outputFilePath, char[] password)
@@ -112,9 +108,5 @@ public class Encrypter {
         }
         inputStream.close();
         outputStream.close();
-
-        for (char c : password){
-            c = '0';
-        }
     }
 }

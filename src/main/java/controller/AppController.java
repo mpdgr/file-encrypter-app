@@ -47,7 +47,9 @@ public class AppController {
             fileChooserAddFilesToEncrypt.addActionListener(event -> {
                 if (event.getActionCommand().equals("ApproveSelection")) {
                     for (File f : fileChooserAddFilesToEncrypt.getSelectedFiles()) {
-                        encryptListModel.addElement(!encryptListModel.contains(f) ? f : null);
+                        if(!encryptListModel.contains(f)){
+                            encryptListModel.addElement(f);
+                        }
                     }
                     mainPanel.repaint();
                 }
@@ -70,7 +72,9 @@ public class AppController {
             fileChooserAddFilesToDecrypt.addActionListener(event -> {
                 if (event.getActionCommand().equals("ApproveSelection")) {
                     for (File f : fileChooserAddFilesToDecrypt.getSelectedFiles()) {
-                        decryptListModel.addElement(!decryptListModel.contains(f) ? f : null);
+                        if(!decryptListModel.contains(f)){
+                            decryptListModel.addElement(f);
+                        }
                     }
                     mainPanel.repaint();
                 }

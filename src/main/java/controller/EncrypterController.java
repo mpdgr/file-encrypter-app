@@ -12,6 +12,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 
 public class EncrypterController {
     void runEncrypt (DefaultListModel<File> listModel, char[] password){
@@ -35,6 +36,7 @@ public class EncrypterController {
                 e.printStackTrace();
             }
         }
+        Arrays.fill(password, '0');
     }
 
     void runDecrypt (DefaultListModel<File> listModel, char[] password){
@@ -58,6 +60,7 @@ public class EncrypterController {
                 e.printStackTrace();
             }
         }
+        Arrays.fill(password, '0');
     }
 
     String getTargetDir(String inputParent){
