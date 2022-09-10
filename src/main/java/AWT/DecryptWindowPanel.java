@@ -12,10 +12,11 @@ public class DecryptWindowPanel extends JPanel {
         int scrollPanelX = (int)(CryptFrame.getHEIGHT() * 0.43);
         int scrollPanelY = (int)(CryptFrame.getHEIGHT() * 0.34);
         scrollPanel.setPreferredSize(new Dimension(scrollPanelX,scrollPanelY));
-        scrollPanel.setBackground(new Color(144, 238, 144));
+        scrollPanel.setBackground(Color.white);
         scrollPanel.setBorder(BorderFactory.createLoweredBevelBorder());
 
         this.add(scrollPanel, BorderLayout.CENTER);
+
 
         String[] strings = new String[]
                 {"kot", "pies", "lew", "pantera", "słoń", "mysz", "hiena", "łoś"};
@@ -29,9 +30,23 @@ public class DecryptWindowPanel extends JPanel {
         scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        CryptScrollBarUI scrollBarUI = new CryptScrollBarUI();
-        scrollPanel.getVerticalScrollBar().setUI(scrollBarUI);
-        scrollBarUI.uninstallComponents();
+        CryptScrollBarUI vScrollBarUI = new CryptScrollBarUI();
+        scrollPanel.getVerticalScrollBar().setUI(vScrollBarUI);
+        vScrollBarUI.uninstallComponents();
+        vScrollBarUI.removeGap();
+
+        CryptScrollBarUI hScrollBarUI = new CryptScrollBarUI();
+        scrollPanel.getHorizontalScrollBar().setUI(hScrollBarUI);
+        hScrollBarUI.uninstallComponents();
+        hScrollBarUI.removeGap();
+
+//        CryptScrollBarUI scrollBarUI = new CryptScrollBarUI();
+//        scrollPanel.getVerticalScrollBar().setUI(scrollBarUI);
+//        scrollPanel.getHorizontalScrollBar().setUI(scrollBarUI);
+//        scrollBarUI.uninstallComponents();
+//        scrollBarUI.removeGap();
+
+
 
     }
 }
