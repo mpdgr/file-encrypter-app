@@ -15,12 +15,12 @@ public class EncryptWindowPanel extends JPanel {
         int scrollPanelX = (int)(CryptFrame.getHEIGHT() * 0.43);
         int scrollPanelY = (int)(CryptFrame.getHEIGHT() * 0.34);
         scrollPanel.setPreferredSize(new Dimension(scrollPanelX,scrollPanelY));
-        scrollPanel.setBackground(new Color(144, 238, 144));
+        scrollPanel.setBackground(Color.white);
         scrollPanel.setBorder(BorderFactory.createLoweredBevelBorder());
 
         this.add(scrollPanel, BorderLayout.CENTER);
         String[] strings = new String[]
-                {"kot", "pies", "małpa", "ryba","lew", "pantera", "słoń", "mysz", "hiena", "łoś", "lis", "wąż"};
+                {"kot", "pies", "małpa", "rybaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","lew", "pantera", "słoń", "mysz", "hiena", "łoś", "lis", "wąż"};
         JList<String> list = new JList<>(strings);
         Font sizedFont = Config.getFont().deriveFont(13f);
         list.setFont(sizedFont);
@@ -32,11 +32,23 @@ public class EncryptWindowPanel extends JPanel {
         scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+//        CryptScrollBarUI scrollBarUI = new CryptScrollBarUI();
+//        scrollPanel.getVerticalScrollBar().setUI(scrollBarUI);
+//        scrollPanel.getHorizontalScrollBar().setUI(scrollBarUI);
+//        scrollBarUI.uninstallComponents();
+//        scrollBarUI.removeGap();
 
-        CryptScrollBarUI scrollBarUI = new CryptScrollBarUI();
-        scrollPanel.getVerticalScrollBar().setUI(scrollBarUI);
-        scrollBarUI.uninstallComponents();
-        scrollBarUI.removeGap();
+        CryptScrollBarUI vScrollBarUI = new CryptScrollBarUI();
+        scrollPanel.getVerticalScrollBar().setUI(vScrollBarUI);
+        vScrollBarUI.uninstallComponents();
+        vScrollBarUI.removeGap();
+
+        CryptScrollBarUI hScrollBarUI = new CryptScrollBarUI();
+        scrollPanel.getHorizontalScrollBar().setUI(hScrollBarUI);
+        hScrollBarUI.uninstallComponents();
+        hScrollBarUI.removeGap();
+
+
 
 //        scrollPanel.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
 //            @Override
