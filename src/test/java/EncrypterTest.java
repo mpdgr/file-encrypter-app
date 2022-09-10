@@ -1,5 +1,6 @@
 import model.Encrypter;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 class EncrypterTest {
 
     @Test
+    @Disabled
     void encryptAndDecryptShouldSuccseedWithCorrectPassword() throws IOException {
         File plain = new File("C:\\java\\FileEncryption\\src\\main\\resources\\files\\plain.txt");
         String passwordString = "test";
@@ -33,6 +35,7 @@ class EncrypterTest {
     }
 
     @Test
+    @Disabled
     void encryptAndDecryptShouldFailWithWrongPassword() throws IOException {
 
         File plain = new File("C:\\java\\FileEncryption\\src\\main\\resources\\files\\plain.txt");
