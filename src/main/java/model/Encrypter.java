@@ -49,7 +49,7 @@ public class Encrypter {
         outputStream.write(salt);
 
         /* write encrypted file into the output */
-        byte[] buffer = new byte[64];
+        byte[] buffer = new byte[16 * 1024];
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) != -1) {
             byte[] output = cipher.update(buffer, 0, bytesRead);
@@ -94,7 +94,7 @@ public class Encrypter {
         Cipher cipher = Cipher.getInstance(algorithm);
         cipher.init(Cipher.DECRYPT_MODE, key, iv);
 
-        byte[] buffer = new byte[64];
+        byte[] buffer = new byte[16 * 1024];
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) != -1) {
             byte[] output = cipher.update(buffer, 0, bytesRead);
