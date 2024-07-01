@@ -36,7 +36,7 @@ public class AppProperties {
     //saving options
     public enum SaveOption {
         saveInCurrentDir,
-        saveInDefaultDir;
+        saveInDefaultDir
     }
 
     public static void saveIn(SaveOption option) {

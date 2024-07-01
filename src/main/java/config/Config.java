@@ -13,8 +13,7 @@ public class Config {
 
     private static final Toolkit toolkit = Toolkit.getDefaultToolkit();
     private static final Dimension screenSize = toolkit.getScreenSize();
-    private static final int SCREEN_HEIGHT = screenSize.height;;
-    private static final int SCREEN_WIDTH = screenSize.width;
+    private static final int SCREEN_HEIGHT = screenSize.height;
 
     /* size reference */
 

@@ -10,9 +10,9 @@ public class EncryptionResult {
     public static final String ENCRYPTION_SUCCESS = "Encryption complete!";
     public static final String DECRYPTION_SUCCESS = "Decryption complete!";
 
-    private Operation operation;
-    private boolean success;
-    private String errorMsg;
+    private final Operation operation;
+    private final boolean success;
+    private final String errorMsg;
 
     public EncryptionResult(Operation operation, boolean success, String errorMsg) {
         this.operation = operation;
