@@ -8,7 +8,7 @@ public class FinishedMessageDialog extends JDialog {
     private final static int WIDTH = Config.getSizeReference() / 4;
     private final static int HEIGHT = Config.getSizeReference() / 8;
 
-    public FinishedMessageDialog(Frame owner, boolean modal, String label) {
+    public FinishedMessageDialog(Frame owner, boolean modal, String info) {
         super(owner, modal);
 
         setSize(WIDTH,HEIGHT);
@@ -21,7 +21,7 @@ public class FinishedMessageDialog extends JDialog {
         messagePanel.setBackground(Config.getColor());
         messagePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        JLabel messageLabel = new JLabel(label);
+        JLabel messageLabel = new JLabel(info);
         Font sizedFont = Config.getFont().deriveFont(15f);
         messageLabel.setFont(sizedFont);
 

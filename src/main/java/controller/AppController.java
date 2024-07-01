@@ -1,6 +1,7 @@
 package controller;
 
 import config.AppProperties;
+import model.EncryptionResult;
 import view.*;
 import javax.swing.*;
 import java.awt.*;
@@ -101,10 +102,12 @@ public class AppController {
                     new CryptMessageDialog(frame, true, "Password cannot be empty");
                 } else {
                     EncrypterController encrypterController = new EncrypterController();
-                    encrypterController.runEncrypt(encryptListModel, encryptPassDialog.getPassword());
+                    EncryptionResult result =
+                            encrypterController.runEncrypt(encryptListModel, encryptPassDialog.getPassword());
                     encryptPassDialog.setVisible(false);
                     encryptListModel.clear();
-                    new FinishedMessageDialog(frame, true, "       Encryption complete!       ");
+                    String msg = Util.formatResultInfo(result);
+                    new FinishedMessageDialog(frame, true, msg);
                 }
             });
             ActionListener encryptListener = event ->
@@ -123,10 +126,12 @@ public class AppController {
                     new CryptMessageDialog(frame, true, "Password cannot be empty");
                 } else {
                     EncrypterController encrypterController = new EncrypterController();
-                    encrypterController.runDecrypt(decryptListModel, decryptPassDialog.getPassword());
+                    EncryptionResult result =
+                            encrypterController.runDecrypt(decryptListModel, decryptPassDialog.getPassword());
                     decryptPassDialog.setVisible(false);
                     decryptListModel.clear();
-                    new FinishedMessageDialog(frame, true, "       Decryption complete!       ");
+                    String msg = Util.formatResultInfo(result);
+                    new FinishedMessageDialog(frame, true, msg);
                 }
             });
             ActionListener decryptListener = event ->

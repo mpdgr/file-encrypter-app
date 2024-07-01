@@ -12,7 +12,7 @@ public class AppProperties {
     static {
         InputStream propertiesStream = AppProperties.class.getResourceAsStream("/properties/app.properties");
         Properties properties = new Properties();
-        try {
+        try (propertiesStream) {
             properties.load(propertiesStream);
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,8 +73,8 @@ public class AppProperties {
     public static void storeProperties() {
         String propertiesPath = Objects.requireNonNull(AppProperties.class.
                 getResource("/properties/app.properties")).getPath();
-        try {
-            appProperties.store(new FileOutputStream(new File(propertiesPath)), "update properties");
+        try (OutputStream updatedPropertiesStream = new FileOutputStream(propertiesPath)) {
+            appProperties.store(updatedPropertiesStream, "update properties");
         } catch (IOException e) {
             e.printStackTrace();
         }
