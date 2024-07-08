@@ -38,18 +38,20 @@ public class Encrypter {
         Cipher cipher = Cipher.getInstance(algorithm);
         cipher.init(Cipher.ENCRYPT_MODE, key, iv);
 
-        File inputFile = new File(inputFilePath);
-        FileInputStream inputStream = new FileInputStream(inputFile);
-
+        /* prepare output */
         File outputFile = new File(outputFilePath);
         FileOutputStream outputStream = new FileOutputStream(outputFile);
+
+        /* prepare input */
+        File inputFile = new File(inputFilePath);
+        FileInputStream inputStream = new FileInputStream(inputFile);
 
         /* write iv and salt at the beginning of the output */
         outputStream.write(ivBytes);
         outputStream.write(salt);
 
         /* write encrypted file into the output */
-        byte[] buffer = new byte[64];
+        byte[] buffer = new byte[16 * 1024];
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) != -1) {
             byte[] output = cipher.update(buffer, 0, bytesRead);
@@ -57,12 +59,14 @@ public class Encrypter {
                 outputStream.write(output);
             }
         }
-        byte[] outputBytes = cipher.doFinal();
-        if (outputBytes != null) {
-            outputStream.write(outputBytes);
+
+        byte[] outputBytes;
+        try (inputStream; outputStream) {
+            outputBytes = cipher.doFinal();
+            if (outputBytes != null) {
+                outputStream.write(outputBytes);
+            }
         }
-        inputStream.close();
-        outputStream.close();
     }
 
     public void decryptFile(String inputFilePath, String outputFilePath, char[] password)
@@ -70,11 +74,13 @@ public class Encrypter {
             InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException,
             IllegalBlockSizeException, InvalidKeySpecException {
 
-        File inputFile = new File(inputFilePath);
-        FileInputStream inputStream = new FileInputStream(inputFile);
-
+        /* prepare output */
         File outputFile = new File(outputFilePath);
         FileOutputStream outputStream = new FileOutputStream(outputFile);
+
+        /* prepare input */
+        File inputFile = new File(inputFilePath);
+        FileInputStream inputStream = new FileInputStream(inputFile);
 
         byte[] ivBytes = new byte[16];
         byte[] salt = new byte[16];
@@ -94,7 +100,7 @@ public class Encrypter {
         Cipher cipher = Cipher.getInstance(algorithm);
         cipher.init(Cipher.DECRYPT_MODE, key, iv);
 
-        byte[] buffer = new byte[64];
+        byte[] buffer = new byte[16 * 1024];
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) != -1) {
             byte[] output = cipher.update(buffer, 0, bytesRead);
@@ -102,11 +108,13 @@ public class Encrypter {
                 outputStream.write(output);
             }
         }
-        byte[] output = cipher.doFinal();
-        if (output != null) {
-            outputStream.write(output);
+
+        byte[] output;
+        try (inputStream; outputStream) {
+            output = cipher.doFinal();
+            if (output != null) {
+                outputStream.write(output);
+            }
         }
-        inputStream.close();
-        outputStream.close();
     }
 }

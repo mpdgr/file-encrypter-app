@@ -13,8 +13,7 @@ public class Config {
 
     private static final Toolkit toolkit = Toolkit.getDefaultToolkit();
     private static final Dimension screenSize = toolkit.getScreenSize();
-    private static final int SCREEN_HEIGHT = screenSize.height;;
-    private static final int SCREEN_WIDTH = screenSize.width;
+    private static final int SCREEN_HEIGHT = screenSize.height;
 
     /* size reference */
 
@@ -37,7 +36,7 @@ public class Config {
         InputStream fontBoldStream = Config.class.getResourceAsStream("/fonts/lato/Lato-Bold.ttf");
         InputStream fontLightStream = Config.class.getResourceAsStream("/fonts/lato/Lato-Light.ttf");
 
-        try {
+        try (fontStream; fontBoldStream; fontLightStream) {
             font = Font.createFont(Font.PLAIN, fontStream);
             fontBold = Font.createFont(Font.PLAIN, fontBoldStream);
             fontLight = Font.createFont(Font.PLAIN, fontLightStream);
@@ -64,7 +63,7 @@ public class Config {
     static {
         InputStream imgStreamIcon = AppProperties.class.getResourceAsStream("/icons/crypticon.png");
         InputStream imgStreamLogo = AppProperties.class.getResourceAsStream("/icons/crypticon.png");
-        try {
+        try (imgStreamIcon; imgStreamLogo) {
             icon = new ImageIcon(imgStreamIcon.readAllBytes());
             logo = ImageIO.read(imgStreamLogo);
         } catch (IOException e) {

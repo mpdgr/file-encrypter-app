@@ -2,6 +2,8 @@ package controller;
 
 import config.AppProperties;
 import model.Encrypter;
+import model.EncryptionResult;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
@@ -15,52 +17,59 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 
 public class EncrypterController {
-    void runEncrypt (DefaultListModel<File> listModel, char[] password){
+    EncryptionResult runEncrypt (DefaultListModel<File> listModel, char[] password){
+        String errorMsg = null;
         File[] files = new File[listModel.getSize()];
         listModel.copyInto(files);
-        for (File f : files){
+        for (File f : files) {
             String parent = f.getParent();
             String fileName = f.getName();
             String outputParent = getTargetDir(parent);
             String outputFileName = outputParent + '/' + fileName + ".enc";
 
             Encrypter encrypter = new Encrypter();
-            //noinspection TryWithIdenticalCatches
             try {
                 encrypter.encryptFile(f.getPath(), outputFileName, password);
-            } catch (IOException e) {
+            } catch (IOException | NoSuchPaddingException | NoSuchAlgorithmException |
+                     InvalidAlgorithmParameterException | InvalidKeyException |
+                     BadPaddingException | IllegalBlockSizeException | InvalidKeySpecException e) {
                 e.printStackTrace();
-            } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidAlgorithmParameterException |
-                    InvalidKeyException | BadPaddingException | IllegalBlockSizeException |
-                    InvalidKeySpecException e) {
-                e.printStackTrace();
+                errorMsg = e.getClass().getSimpleName();
+                break;
             }
         }
         Arrays.fill(password, '0');
+        boolean success = errorMsg == null;
+        return new EncryptionResult(EncryptionResult.Operation.ENCRYPTION, success, errorMsg);
     }
 
-    void runDecrypt (DefaultListModel<File> listModel, char[] password){
+    EncryptionResult runDecrypt (DefaultListModel<File> listModel, char[] password){
+        String errorMsg = null;
         File[] files = new File[listModel.getSize()];
         listModel.copyInto(files);
-        for (File f : files){
+        for (File f : files) {
             String parent = f.getParent();
             String fileName = f.getName();
             String outputParent = getTargetDir(parent);
             String outputFileName = outputParent + '/' + fileName.replaceFirst(".enc", "");
 
             Encrypter encrypter = new Encrypter();
-            //noinspection TryWithIdenticalCatches
             try {
                 encrypter.decryptFile(f.getPath(), outputFileName, password);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (NoSuchPaddingException | NoSuchAlgorithmException | InvalidAlgorithmParameterException |
-                    InvalidKeyException | BadPaddingException | IllegalBlockSizeException |
+            } catch (IOException | NoSuchAlgorithmException | InvalidAlgorithmParameterException |
+                    InvalidKeyException | NoSuchPaddingException | IllegalBlockSizeException |
                     InvalidKeySpecException e) {
                 e.printStackTrace();
+                errorMsg = e.getClass().getSimpleName();
+                break;
+            } catch (BadPaddingException e) {
+                errorMsg = EncryptionResult.INVALID_PASS;
+                break;
             }
         }
         Arrays.fill(password, '0');
+        boolean success = errorMsg == null;
+        return new EncryptionResult(EncryptionResult.Operation.DECRYPTION, success, errorMsg);
     }
 
     String getTargetDir(String inputParent){

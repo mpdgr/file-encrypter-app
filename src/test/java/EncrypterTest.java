@@ -19,7 +19,7 @@ class EncrypterTest {
     @Test
     @Disabled
     void encryptAndDecryptShouldSuccseedWithCorrectPassword() throws IOException {
-        File plain = new File("C:\\java\\FileEncryption\\src\\main\\resources\\files\\plain.txt");
+        File plain = new File("C:\\java\\encrypter-test\\plain.txt");
         String passwordString = "test";
         char[] password = passwordString.toCharArray();
 
@@ -38,7 +38,7 @@ class EncrypterTest {
     @Disabled
     void encryptAndDecryptShouldFailWithWrongPassword() throws IOException {
 
-        File plain = new File("C:\\java\\FileEncryption\\src\\main\\resources\\files\\plain.txt");
+        File plain = new File("C:\\java\\encrypter-test\\plain.txt");
         String passwordString = "test";
         char[] password = passwordString.toCharArray();
         String wrongPasswordString = "wrong";
@@ -57,7 +57,7 @@ class EncrypterTest {
 
     File encryptFileTest(File file, char[] password){
 
-        String outputPath = "C:\\java\\FileEncryption\\src\\main\\resources\\files\\encrypted.txt.enc";
+        String outputPath = "C:\\java\\encrypter-test\\encrypted.txt.enc";
 
         Encrypter encrypter = new Encrypter();
         try {
@@ -72,7 +72,7 @@ class EncrypterTest {
 
     File decryptFileTest(File file, char[] password){
 
-        String outputPath = "C:\\java\\FileEncryption\\src\\main\\resources\\files\\decrypted.txt";
+        String outputPath = "C:\\java\\encrypter-test\\decrypted.txt";
 
         Encrypter encrypter = new Encrypter();
         try {
